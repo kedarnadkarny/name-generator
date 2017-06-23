@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Name Generator</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+    <div class="container" id="main">
+	<div class="design">
+	<div class="row" id="project-name">
+	</div>	
+	</div>
+	<div class="row button">
+		<button class="btn btn-success btn-block" onclick=generateName()>GENERATE NAME</button>
+	</div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+	function generateName(){
+                $.ajax({
+                        method: "GET",
+                        url: "./generator",
+                        contentType: "application/json"
+                	}).done(function(data) {
+			$("#project-name").text(data)
+                	});
+        	}
+    </script>
+<style>
+#main {
+    padding-top: 10%;
+}
+.design {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    height: 200px;
+    font-size: 80px;
+}
+.button {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    height: 100px;
+}
+@media only screen and (max-width: 500px) {
+    button {
+	margin-top: 100px;
+    }
+}
+</style>
+</body>
+</html>
+
